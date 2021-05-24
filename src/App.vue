@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Udemm logo" src="./assets/udemm_logo.png">
+    <img alt="Udemm logo" src="./assets/test_beam.png">
+    <HelloWorld msg="Remote Lab: Frontend-beam"/>
   </div>
 </template>
 
