@@ -1,3 +1,10 @@
+La intencion de este proyecto es poder probar el servidor flask que controla el banco de ensayo de experimento viga simplemente apoyada 
+El estadio del codigo es experimental 
+
+para usar  el codigo 
+
+
+
 # frontend_beam
 
 ## Project setup
