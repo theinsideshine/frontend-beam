@@ -12,7 +12,7 @@ para usar  el codigo
 
 ## Install vue 
 ```
-npm vue
+npm install vue
 ```
 
 ## https://stackoverflow.com/questions/59867434/every-vue-component-returning-cannot-read-property-parsecomponent-of-undefined
@@ -31,15 +31,4 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
