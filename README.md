@@ -7,6 +7,20 @@ para usar  el codigo
 
 # frontend_beam
 
+## Install node.js and npm
+
+
+## Install vue 
+```
+npm vue
+```
+
+## https://stackoverflow.com/questions/59867434/every-vue-component-returning-cannot-read-property-parsecomponent-of-undefined
+```
+npm update vue-template-compiler
+```
+
+
 ## Project setup
 ```
 npm install
