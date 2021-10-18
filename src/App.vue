@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img alt="Udemm logo" src="./assets/udemm_logo.png">
-    <img alt="Udemm logo" src="./assets/test_beam.png">
-    <HelloWorld msg="Remote Lab: Frontend-beam"/>
+    <img alt="Udemm logo"  height="200"    src="./assets/mecanismo_beam.png">
+    <HelloWorld msg="Remote Lab: Frontend-beam V1.0.01"/>
   </div>
 </template>
 

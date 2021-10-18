@@ -1,37 +1,47 @@
 <template>
   <div class="hello">
-    {{ msg }}
-    <p>Distancia en milimetros :
-    <input v-model.number="distance" type="number" placeholder="Ingrese la distancia." />
-    <button v-on:click="putDistance">Put distance</button>
+    <b>{{ msg }}</b>
+    <p style="color:blue" > <b>Version de firwmare :</b> {{ version }}
+       <button v-on:click="getVersion" style="color:blue">Get version</button>       
+       
+    <p/>
+    <p> <b> Parametros del ensayo </b>    
+      <button v-on:click="getAll" style="color:blue">Get parametros</button>
+      <button v-on:click="putStart"  style="color:green">Empezar ensayo</button>
+     </p>
+    <p style="color:red"><b>Distancia en milimetros :</b>
+    <input v-model.number="distance"  style="color:red" type="number" placeholder="Ingrese la distancia." />
+    <button v-on:click="putDistance" style="color:red">Set distance</button>
+    
     </p>
-    <p>Fuerza aplicada en gramos :
-    <input v-model.number="force" type="number" placeholder="Ingrese la fuerza." />
-    <button v-on:click="putForce">Put fuerza</button>
-    <button v-on:click="putStart">Empezar ensayo</button>
+    <p style="color:red" ><b>Fuerza aplicada en gramos :</b>
+    <input v-model.number="force" style="color:red" type="number" placeholder="Ingrese la fuerza." />
+    <button v-on:click="putForce" style="color:red">Set fuerza</button>
+    
+    </p>
+     
 
+    <p style="color:blue"> <b>Fuerza de reaccion 1 :</b> {{ reaction_one }}<p/>
+    <p style="color:blue"><b>Fuerza de reaccion 2 :</b> {{ reaction_two }}<p/>
+    <p style="color:blue"><b>Flexion : </b>{{ flexion }}<p/>
+    <p style="color:blue"><b>Status del ensayo:</b> {{ st_test }}</p>
+
+    <p>
+     <b style="color:red" >Ingrese ip y puerto del servidor </b>:
+      <input v-model="ip_puerto" type="text" style="color:red" placeholder="xxx.xxx.xxx.xxx:xxxx" />
     </p>
-     <p>Version : {{ version }}
-       <button v-on:click="getVersion">Get version</button>
-       <button v-on:click="getAll">Get parametros</button>
-      <p/>
-     <p>Status : {{ st_test }}
-       <button v-on:click="getStatus">Get status</button>
-       Log level : {{ log_level }}
-      <p/>
-      <p>Fuerza de reaccion 1 : {{ reaction_one }}
-       <button v-on:click="getReaction_one">Get reaction1</button>
-      <p/>
-      <p/>
-      <p>Fuerza de reaccion 2 : {{ reaction_two }}
-       <button v-on:click="getReaction_two">Get reaction2</button>
-      <p/>
-      <p>Flexion : {{ flexion }}
-       <button v-on:click="getFlexion">Get flexion</button>
-      <p/>
-      <p>Ingrese ip y puerto del servidor :
-    <input v-model="ip_puerto" type="text" placeholder="xxx.xxx.xxx.xxx:xxxx" />
+
+    <p> <b> Parametros de configuracion </b>
+        <button v-on:click="getAllCal" style="color:blue">Get configuracion</button>       
     </p>
+
+    <p style="color:blue"> <b>Log level :</b> {{ log_level }}
+       <b>Cantidad de pasos :</b> {{ step_cal }}
+       <b style="color:red">Constante de flexion :</b>
+       <input v-model.number="step_k" style="color:red" type="number" placeholder="Ingrese la constante." />
+       <button type="button" v-on:click="putStepK" style="color:red">Set flexion_k</button>
+    </p>
+     
   </div>
 </template>
 
@@ -52,7 +62,9 @@ export default {
       flexion: 'Sin distancia de flexion',
       distance: 0,
       force: 0,
-      log_level: 0
+      log_level: 0,
+      step_cal : 100,
+      step_k:  0.000123
     }
   },
   methods: {
@@ -69,6 +81,15 @@ export default {
       const path = this.ip_puerto + '/parameters/force/' + this.force
       axios.put(path).then((respuesta) => {
         this.force = respuesta.data.force
+      })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    putStepK () {
+      const path = this.ip_puerto + '/parameters/step_k/' + this.step_k
+      axios.put(path).then((respuesta) => {
+        this.step_k= respuesta.data.step_k
       })
         .catch((error) => {
           console.log(error)
@@ -94,8 +115,7 @@ export default {
         this.reaction_two = respuesta.data.reaction_two
         this.flexion = respuesta.data.flexion
         this.distance = respuesta.data.distance
-        this.force = respuesta.data.force
-        this.log_level = respuesta.data.log_level
+        this.force = respuesta.data.force        
       })
         .catch((error) => {
           console.log(error)
@@ -142,6 +162,18 @@ export default {
       const path = this.ip_puerto + '/info/flexion'
       axios.get(path).then((respuesta) => {
         this.flexion = respuesta.data.flexion // key = "flexion"
+      })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    getAllCal () {
+      const path = this.ip_puerto + '/info/calibration'
+      axios.get(path).then((respuesta) => {       
+        this.log_level = respuesta.data.log_level
+        this.step_cal= respuesta.data.step_cal
+        this.step_k = respuesta.data.step_k
+        
       })
         .catch((error) => {
           console.log(error)
