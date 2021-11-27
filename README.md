@@ -1,8 +1,16 @@
-La intencion de este proyecto es poder probar el servidor flask que controla el banco de ensayo de experimento viga simplemente apoyada 
-El estadio del codigo es experimental 
+[Proyecto final](doc/LRVSA_proyecto%20final.docx.pdf)
 
-para usar  el codigo 
+[Comunicacion](doc/Comunicacion-RLVSA.pdf)
 
+[Cliente servidor](doc/LRVSA_cliente_servidor.pdf) 
+
+[Manual usuario](doc/LRVSA_manual_del_usuario.docx.pdf) 
+
+[![Ver el video](doc/preview_video.gif)](https://youtu.be/5dQEUtAvH4g ) 
+
+[Back-end](https://github.com/theinsideshine/beam_remote_lab_server)
+
+[Firmware](https://github.com/theinsideshine/flexion_viga)
 
 
 # frontend_beam
